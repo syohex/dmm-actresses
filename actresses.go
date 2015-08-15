@@ -51,6 +51,7 @@ func main() {
 		for _, actress := range actresses {
 			_, err := stmt.Exec(actress.ID, actress.Name, actress.Image)
 			if err != nil {
+				log.Printf("Failed inserting '%v'\n", actress)
 				log.Fatalln(err)
 			}
 			log.Printf("Insert %v\n", actress)
