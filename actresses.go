@@ -33,7 +33,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	stmt, err := tx.Prepare("INSERT INTO actresses(id, name, image) values(?, ?, ?)")
+	stmt, err := tx.Prepare("INSERT INTO actresses(id, name, image, works) values(?, ?, ?, ?)")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -49,7 +49,7 @@ func main() {
 		}
 
 		for _, actress := range actresses {
-			_, err := stmt.Exec(actress.ID, actress.Name, actress.Image)
+			_, err := stmt.Exec(actress.ID, actress.Name, actress.Image, actress.Works)
 			if err != nil {
 				log.Printf("Failed inserting '%v'\n", actress)
 				log.Fatalln(err)
